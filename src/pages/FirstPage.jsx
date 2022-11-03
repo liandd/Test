@@ -1,28 +1,17 @@
-import React from "react"
-import { useState } from "react"
-
-// useState
+import {useContador} from "../hooks/useContador"
+//useState
+//REFACTOR
 export const FirstPage = () => {
-    const [valor, setValor] = useState (10)
-    // const incrementar = () => {
-    //     setValor (valor + 1)
-    // }
-    // const decrementar = () => {
-    //     setValor (valor - 1)
-    // }
-    const modificarEstado = (num) => {
-        setValor (Math.max (valor + num, 0))
-    }
-    const resetearEstado = () => {
-        setValor (10);
-    }
+
+    const {valor, modificarEstado, increaseBy, dicreaseBy, reset} = useContador(200,10,10)
     return (
         <>
-        <h1>contador</h1>
-        <h1>{ valor }</h1>
-        <button onClick={() => modificarEstado(+1) }>+1</button>
-        <button onClick={() => modificarEstado(-1) }>-1</button>
-        <button onClick={() => resetearEstado()}>reset</button>
+        <h1>Contador Mejorado</h1>
+        <hr/>
+        <h1>{valor}</h1>
+        <button onClick={increaseBy}> Incrementar </button> <br />
+        <button onClick={dicreaseBy}> Decrementar </button> <br />
+        <button onClick={reset}> Reset </button> <br />
         </>
     )
-} 
+}
